@@ -14,7 +14,39 @@
  *= require_self
  */
 
-body { padding-top: 60px; }
+body {
+  padding-top: 60px;
+  background-image: url('https://image.freepik.com/free-vector/modern-technological-elements-with-transparent-background_1035-7108.jpg');
+  /*background-image: url('https://wallpaperbrowse.com/media/images/518164-backgrounds.jpg');*/
+}
 footer { margin-top: 100px; }
 table, td, th { vertical-align: middle; border: none; }
 th { border-bottom: 1px solid #DDD; }
+
+.navbar {
+  min-height: 38px;
+  background-color: #f55e55 !important;
+  background-image: none !important;
+}
+
+.navbar a.brand { font-size: 18px; }
+.navbar a.brand:hover {
+  color: #fff;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+footer {
+  background-color: #ebebeb;
+  padding: 30px 0;
+}
+
+.clear-both {
+  clear: both;
+}
+
+/*.container input[type="submit"] {*/
+/*  -ms-transform: rotate(45deg);*/
+/*  -webkit-transform: rotate(45deg);*/
+/*  transform: rotate(45deg);*/
+/*}*/

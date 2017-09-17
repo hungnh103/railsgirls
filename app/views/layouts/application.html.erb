@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Demo</title>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
@@ -25,15 +26,35 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/ideas">Ideas</a></li>
+            <p class="navbar-text pull-right">
+            <% if user_signed_in? %>
+              <%= image_tag current_user.gravatar_url, width: 20, height: 20 %>
+              Logged in as <strong><%= current_user.email %></strong>.
+              <%= link_to "Edit profile", edit_user_registration_path, :class => 'navbar-link' %> |
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+            <% else %>
+              <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+              <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+            <% end %>
             <li ><%= link_to 'New Idea', new_idea_path %></li>
           </ul>
         </div>
       </div>
     </nav> 
     
+    
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    
     <div class="container">
       <%= yield %>
     </div>
+    
+    <div class="clear-both"></div>
     
     <footer>
       <div class="container">
